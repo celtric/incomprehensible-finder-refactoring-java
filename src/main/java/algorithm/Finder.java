@@ -18,15 +18,6 @@ public class Finder {
 			}
 		}
 
-		if (results.size() < 1) {
-			return Result.empty();
-		}
-
-		Result answer = results.get(0);
-		for (Result result : results) {
-			answer = criteria.calculate(answer, result);
-		}
-
-		return answer;
+		return results.stream().reduce(criteria::calculate).orElse(Result.empty());
 	}
 }
