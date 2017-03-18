@@ -1,7 +1,7 @@
 package algorithm;
 
 public enum Criteria {
-	One {
+	Closest {
 		@Override
 		Result calculate(Result lastResult, Result nextResult) {
 			if (nextResult.ageDifference() < lastResult.ageDifference()) {
@@ -12,7 +12,7 @@ public enum Criteria {
 		}
 	},
 
-	Two {
+	Farthest {
 		@Override
 		Result calculate(Result lastResult, Result nextResult) {
 			if (nextResult.ageDifference() > lastResult.ageDifference()) {

@@ -23,7 +23,7 @@ public class FinderTests {
 
     @Test
 	public void Returns_Empty_Results_When_Given_Empty_List() {
-        Optional<Result> result = finder().Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.Closest);
 
 		assertFalse(result.isPresent());
 	}
@@ -32,7 +32,7 @@ public class FinderTests {
 	public void Returns_Empty_Results_When_Given_One_Person() {
 		list.add(sue);
 
-        Optional<Result> result = finder().Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.Closest);
 
         assertFalse(result.isPresent());
 	}
@@ -42,7 +42,7 @@ public class FinderTests {
 		list.add(sue);
 		list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.Closest);
 
 		assertEquals(sue, result.get().youngest());
 		assertEquals(greg, result.get().oldest());
@@ -53,7 +53,7 @@ public class FinderTests {
 		list.add(mike);
 		list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.Two);
+        Optional<Result> result = finder().Find(Criteria.Farthest);
 
 		assertEquals(greg, result.get().youngest());
 		assertEquals(mike, result.get().oldest());
@@ -66,7 +66,7 @@ public class FinderTests {
 		list.add(mike);
 		list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.Two);
+        Optional<Result> result = finder().Find(Criteria.Farthest);
 
 		assertEquals(sue, result.get().youngest());
 		assertEquals(sarah, result.get().oldest());
@@ -79,7 +79,7 @@ public class FinderTests {
 		list.add(mike);
 		list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.Closest);
 
 		assertEquals(sue, result.get().youngest());
 		assertEquals(greg, result.get().oldest());
