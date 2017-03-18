@@ -11,6 +11,10 @@ public class Finder {
 	}
 
 	public Optional<Result> Find(Criteria criteria) {
+		return results().stream().reduce(criteria::calculate);
+	}
+
+	private List<Result> results() {
 		List<Result> results = new ArrayList<>();
 
 		for (int i = 0; i < people.size() - 1; i++) {
@@ -19,6 +23,6 @@ public class Finder {
 			}
 		}
 
-		return results.stream().reduce(criteria::calculate);
+		return results;
 	}
 }
