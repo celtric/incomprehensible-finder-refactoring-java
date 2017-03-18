@@ -8,7 +8,7 @@ import java.util.List;
 import org.junit.Test;
 
 import algorithm.Result;
-import algorithm.FT;
+import algorithm.Criteria;
 import algorithm.Finder;
 import algorithm.Person;
 
@@ -24,7 +24,7 @@ public class FinderTests {
 		List<Person> list = new ArrayList<Person>();
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(FT.One);
+		Result result = finder.Find(Criteria.One);
 		assertEquals(null, result.left());
 
 		assertEquals(null, result.right());
@@ -37,7 +37,7 @@ public class FinderTests {
 
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(FT.One);
+		Result result = finder.Find(Criteria.One);
 
 		assertEquals(null, result.left());
 		assertEquals(null, result.right());
@@ -50,7 +50,7 @@ public class FinderTests {
 		list.add(greg);
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(FT.One);
+		Result result = finder.Find(Criteria.One);
 
 		assertEquals(sue, result.left());
 		assertEquals(greg, result.right());
@@ -64,7 +64,7 @@ public class FinderTests {
 
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(FT.Two);
+		Result result = finder.Find(Criteria.Two);
 
 		assertEquals(greg, result.left());
 		assertEquals(mike, result.right());
@@ -79,7 +79,7 @@ public class FinderTests {
 		list.add(greg);
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(FT.Two);
+		Result result = finder.Find(Criteria.Two);
 
 		assertEquals(sue, result.left());
 		assertEquals(sarah, result.right());
@@ -95,7 +95,7 @@ public class FinderTests {
 
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(FT.One);
+		Result result = finder.Find(Criteria.One);
 
 		assertEquals(sue, result.left());
 		assertEquals(greg, result.right());

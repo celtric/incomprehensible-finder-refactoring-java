@@ -9,7 +9,7 @@ public class Finder {
 		this.people = people;
 	}
 
-	public Result Find(FT ft) {
+	public Result Find(Criteria criteria) {
 		List<Result> results = new ArrayList<Result>();
 
 		for (int i = 0; i < people.size() - 1; i++) {
@@ -24,7 +24,7 @@ public class Finder {
 
 		Result answer = results.get(0);
 		for (Result result : results) {
-			switch (ft) {
+			switch (criteria) {
 				case One :
 					if (result.ageDifference() < answer.ageDifference()) {
 						answer = result;
