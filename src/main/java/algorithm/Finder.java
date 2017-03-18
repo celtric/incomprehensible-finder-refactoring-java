@@ -11,7 +11,7 @@ public class Finder {
 	}
 
 	public Optional<Result> Find(Criteria criteria) {
-		return results().stream().reduce(criteria::calculate);
+		return results().stream().reduce(criteria::choose);
 	}
 
 	private List<Result> results() {

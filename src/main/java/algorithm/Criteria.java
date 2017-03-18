@@ -1,27 +1,19 @@
 package algorithm;
 
 public enum Criteria {
-	Closest {
-		@Override
-		Result calculate(Result lastResult, Result nextResult) {
-			if (nextResult.ageDifference() < lastResult.ageDifference()) {
-				return nextResult;
-			} else {
-				return lastResult;
-			}
-		}
-	},
+    Closest {
+        @Override
+        Result choose(Result left, Result right) {
+            return left.ageDifference() < right.ageDifference() ? left : right;
+        }
+    },
 
-	Farthest {
-		@Override
-		Result calculate(Result lastResult, Result nextResult) {
-			if (nextResult.ageDifference() > lastResult.ageDifference()) {
-				return nextResult;
-			} else  {
-				return lastResult;
-			}
-		}
-	};
+    Farthest {
+        @Override
+        Result choose(Result left, Result right) {
+            return left.ageDifference() > right.ageDifference() ? left : right;
+        }
+    };
 
-	abstract Result calculate(Result lastResult, Result nextResult);
+    abstract Result choose(Result left, Result right);
 }
