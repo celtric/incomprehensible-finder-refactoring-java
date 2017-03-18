@@ -9,8 +9,8 @@ public class Result {
 		this.older = older;
 	}
 
-	static Result fromPeople(Person left, Person right) {
-		if (left.birthDate().getTime() < right.birthDate().getTime()) {
+	static Result fromPair(Person left, Person right) {
+		if (left.isYoungerThan(right)) {
 			return new Result(left, right);
 		} else {
 			return new Result(right, left);
