@@ -24,19 +24,7 @@ public class Finder {
 
 		Result answer = results.get(0);
 		for (Result result : results) {
-			switch (criteria) {
-				case One :
-					if (result.ageDifference() < answer.ageDifference()) {
-						answer = result;
-					}
-					break;
-
-				case Two :
-					if (result.ageDifference() > answer.ageDifference()) {
-						answer = result;
-					}
-					break;
-			}
+			answer = criteria.calculate(answer, result);
 		}
 
 		return answer;
