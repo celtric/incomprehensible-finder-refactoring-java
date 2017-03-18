@@ -1,12 +1,12 @@
 package algorithm;
 
 public class Result {
-	private final Person younger;
-	private final Person older;
+	private final Person youngest;
+	private final Person oldest;
 
-	private Result(Person younger, Person older) {
-		this.younger = younger;
-		this.older = older;
+	private Result(Person youngest, Person oldest) {
+		this.youngest = youngest;
+		this.oldest = oldest;
 	}
 
 	static Result fromPair(Person left, Person right) {
@@ -17,15 +17,15 @@ public class Result {
 		}
 	}
 
-	public Person left() {
-		return younger;
+	public Person youngest() {
+		return youngest;
 	}
 
-	public Person right() {
-		return older;
+	public Person oldest() {
+		return oldest;
 	}
 
 	long ageDifference() {
-		return older.birthDate().getTime() - younger.birthDate().getTime();
+		return oldest.birthDate().getTime() - youngest.birthDate().getTime();
 	}
 }

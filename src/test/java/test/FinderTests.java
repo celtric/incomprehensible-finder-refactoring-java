@@ -44,8 +44,8 @@ public class FinderTests {
 
         Optional<Result> result = finder().Find(Criteria.One);
 
-		assertEquals(sue, result.get().left());
-		assertEquals(greg, result.get().right());
+		assertEquals(sue, result.get().youngest());
+		assertEquals(greg, result.get().oldest());
 	}
 
 	@Test
@@ -55,8 +55,8 @@ public class FinderTests {
 
         Optional<Result> result = finder().Find(Criteria.Two);
 
-		assertEquals(greg, result.get().left());
-		assertEquals(mike, result.get().right());
+		assertEquals(greg, result.get().youngest());
+		assertEquals(mike, result.get().oldest());
 	}
 
 	@Test
@@ -68,8 +68,8 @@ public class FinderTests {
 
         Optional<Result> result = finder().Find(Criteria.Two);
 
-		assertEquals(sue, result.get().left());
-		assertEquals(sarah, result.get().right());
+		assertEquals(sue, result.get().youngest());
+		assertEquals(sarah, result.get().oldest());
 	}
 
 	@Test
@@ -81,8 +81,8 @@ public class FinderTests {
 
         Optional<Result> result = finder().Find(Criteria.One);
 
-		assertEquals(sue, result.get().left());
-		assertEquals(greg, result.get().right());
+		assertEquals(sue, result.get().youngest());
+		assertEquals(greg, result.get().oldest());
 	}
 
     private Finder finder() {
