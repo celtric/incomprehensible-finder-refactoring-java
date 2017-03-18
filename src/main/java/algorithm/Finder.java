@@ -9,12 +9,12 @@ public class Finder {
 		this.people = people;
 	}
 
-	public F Find(FT ft) {
-		List<F> tr = new ArrayList<F>();
+	public Result Find(FT ft) {
+		List<Result> results = new ArrayList<Result>();
 
 		for (int i = 0; i < people.size() - 1; i++) {
 			for (int j = i + 1; j < people.size(); j++) {
-				F r = new F();
+				Result r = new Result();
 				if (people.get(i).birthDate().getTime() < people.get(j).birthDate().getTime()) {
 					r.P1 = people.get(i);
 					r.P2 = people.get(j);
@@ -23,16 +23,16 @@ public class Finder {
 					r.P2 = people.get(i);
 				}
 				r.D = r.P2.birthDate().getTime() - r.P1.birthDate().getTime();
-				tr.add(r);
+				results.add(r);
 			}
 		}
 
-		if (tr.size() < 1) {
-			return new F();
+		if (results.size() < 1) {
+			return new Result();
 		}
 
-		F answer = tr.get(0);
-		for (F result : tr) {
+		Result answer = results.get(0);
+		for (Result result : results) {
 			switch (ft) {
 				case One :
 					if (result.D < answer.D) {
