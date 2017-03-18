@@ -42,10 +42,10 @@ public class FinderTests {
         list.add(sue);
         list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.Closest);
+        Result result = finder().Find(Criteria.Closest).orElseThrow(() -> new RuntimeException("Expected a result"));
 
-        assertEquals(sue, result.get().youngest());
-        assertEquals(greg, result.get().oldest());
+        assertEquals(sue, result.youngest());
+        assertEquals(greg, result.oldest());
     }
 
     @Test
@@ -53,10 +53,10 @@ public class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.Farthest);
+        Result result = finder().Find(Criteria.Farthest).orElseThrow(() -> new RuntimeException("Expected a result"));
 
-        assertEquals(greg, result.get().youngest());
-        assertEquals(mike, result.get().oldest());
+        assertEquals(greg, result.youngest());
+        assertEquals(mike, result.oldest());
     }
 
     @Test
@@ -66,10 +66,10 @@ public class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.Farthest);
+        Result result = finder().Find(Criteria.Farthest).orElseThrow(() -> new RuntimeException("Expected a result"));
 
-        assertEquals(sue, result.get().youngest());
-        assertEquals(sarah, result.get().oldest());
+        assertEquals(sue, result.youngest());
+        assertEquals(sarah, result.oldest());
     }
 
     @Test
@@ -79,10 +79,10 @@ public class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Optional<Result> result = finder().Find(Criteria.Closest);
+        Result result = finder().Find(Criteria.Closest).orElseThrow(() -> new RuntimeException("Expected a result"));
 
-        assertEquals(sue, result.get().youngest());
-        assertEquals(greg, result.get().oldest());
+        assertEquals(sue, result.youngest());
+        assertEquals(greg, result.oldest());
     }
 
     private Finder finder() {
