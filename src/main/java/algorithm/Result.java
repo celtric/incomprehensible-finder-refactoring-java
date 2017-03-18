@@ -10,11 +10,7 @@ public class Result {
 	}
 
 	static Result fromPair(Person left, Person right) {
-		if (left.isYoungerThan(right)) {
-			return new Result(left, right);
-		} else {
-			return new Result(right, left);
-		}
+	    return new Result(left.youngest(right), left.oldest(right));
 	}
 
 	public Person youngest() {

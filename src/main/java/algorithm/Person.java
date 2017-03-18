@@ -14,7 +14,15 @@ public class Person {
 		return birthDate;
 	}
 
-	boolean isYoungerThan(Person anotherPerson) {
+	Person youngest(Person aPerson) {
+		return isYoungerThan(aPerson) ? this : aPerson;
+	}
+
+	Person oldest(Person aPerson) {
+		return isYoungerThan(aPerson) ? aPerson : this;
+	}
+
+	private boolean isYoungerThan(Person anotherPerson) {
 		return birthDate().getTime() < anotherPerson.birthDate().getTime();
 	}
 }
