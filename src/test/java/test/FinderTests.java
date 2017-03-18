@@ -23,20 +23,16 @@ public class FinderTests {
 
     @Test
 	public void Returns_Empty_Results_When_Given_Empty_List() {
-		Finder finder = new Finder(list);
-
-		Optional<Result> result = finder.Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.One);
 
 		assertFalse(result.isPresent());
 	}
 
-	@Test
+    @Test
 	public void Returns_Empty_Results_When_Given_One_Person() {
 		list.add(sue);
 
-		Finder finder = new Finder(list);
-
-		Optional<Result> result = finder.Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.One);
 
         assertFalse(result.isPresent());
 	}
@@ -45,9 +41,8 @@ public class FinderTests {
 	public void Returns_Closest_Two_For_Two_People() {
 		list.add(sue);
 		list.add(greg);
-		Finder finder = new Finder(list);
 
-		Optional<Result> result = finder.Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.One);
 
 		assertEquals(sue, result.get().left());
 		assertEquals(greg, result.get().right());
@@ -58,9 +53,7 @@ public class FinderTests {
 		list.add(mike);
 		list.add(greg);
 
-		Finder finder = new Finder(list);
-
-		Optional<Result> result = finder.Find(Criteria.Two);
+        Optional<Result> result = finder().Find(Criteria.Two);
 
 		assertEquals(greg, result.get().left());
 		assertEquals(mike, result.get().right());
@@ -72,9 +65,8 @@ public class FinderTests {
 		list.add(sarah);
 		list.add(mike);
 		list.add(greg);
-		Finder finder = new Finder(list);
 
-		Optional<Result> result = finder.Find(Criteria.Two);
+        Optional<Result> result = finder().Find(Criteria.Two);
 
 		assertEquals(sue, result.get().left());
 		assertEquals(sarah, result.get().right());
@@ -87,12 +79,13 @@ public class FinderTests {
 		list.add(mike);
 		list.add(greg);
 
-		Finder finder = new Finder(list);
-
-		Optional<Result> result = finder.Find(Criteria.One);
+        Optional<Result> result = finder().Find(Criteria.One);
 
 		assertEquals(sue, result.get().left());
 		assertEquals(greg, result.get().right());
 	}
 
+    private Finder finder() {
+        return new Finder(list);
+    }
 }
