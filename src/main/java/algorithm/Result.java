@@ -3,19 +3,17 @@ package algorithm;
 public class Result {
 	private final Person left;
 	private final Person right;
-	private final long ageDifference;
 
-	private Result(Person left, Person right, long ageDifference) {
+	private Result(Person left, Person right) {
 		this.left = left;
 		this.right = right;
-		this.ageDifference = ageDifference;
 	}
 
 	static Result fromPeople(Person left, Person right) {
 		if (left.birthDate().getTime() < right.birthDate().getTime()) {
-			return new Result(left, right, right.birthDate().getTime() - left.birthDate().getTime());
+			return new Result(left, right);
 		} else {
-			return new Result(right, left, left.birthDate().getTime() - right.birthDate().getTime());
+			return new Result(right, left);
 		}
 	}
 
@@ -28,6 +26,6 @@ public class Result {
 	}
 
 	long ageDifference() {
-		return ageDifference;
+		return right.birthDate().getTime() - left.birthDate().getTime();
 	}
 }
