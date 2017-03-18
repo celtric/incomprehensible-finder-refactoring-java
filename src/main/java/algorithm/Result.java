@@ -11,22 +11,12 @@ public class Result {
 		this.ageDifference = ageDifference;
 	}
 
-	private Result() {
-		this.left = null;
-		this.right = null;
-		this.ageDifference = 0;
-	}
-
 	static Result fromPeople(Person left, Person right) {
 		if (left.birthDate().getTime() < right.birthDate().getTime()) {
 			return new Result(left, right, right.birthDate().getTime() - left.birthDate().getTime());
 		} else {
 			return new Result(right, left, left.birthDate().getTime() - right.birthDate().getTime());
 		}
-	}
-
-	static Result empty() {
-		return new Result();
 	}
 
 	public Person left() {

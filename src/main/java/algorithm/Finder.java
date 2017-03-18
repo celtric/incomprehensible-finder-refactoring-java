@@ -1,6 +1,7 @@
 package algorithm;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Optional;
 
 public class Finder {
 	private final List<Person> people;
@@ -9,7 +10,7 @@ public class Finder {
 		this.people = people;
 	}
 
-	public Result Find(Criteria criteria) {
+	public Optional<Result> Find(Criteria criteria) {
 		List<Result> results = new ArrayList<Result>();
 
 		for (int i = 0; i < people.size() - 1; i++) {
@@ -18,6 +19,6 @@ public class Finder {
 			}
 		}
 
-		return results.stream().reduce(criteria::calculate).orElse(Result.empty());
+		return results.stream().reduce(criteria::calculate);
 	}
 }

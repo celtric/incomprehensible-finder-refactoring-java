@@ -1,11 +1,12 @@
 package test;
-import static org.junit.Assert.assertEquals;
 
 import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
+import java.util.Optional;
 
 import org.junit.Test;
+import static org.junit.Assert.*;
 
 import algorithm.Result;
 import algorithm.Criteria;
@@ -24,10 +25,9 @@ public class FinderTests {
 		List<Person> list = new ArrayList<Person>();
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(Criteria.One);
-		assertEquals(null, result.left());
+		Optional<Result> result = finder.Find(Criteria.One);
 
-		assertEquals(null, result.right());
+		assertFalse(result.isPresent());
 	}
 
 	@Test
@@ -37,10 +37,9 @@ public class FinderTests {
 
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(Criteria.One);
+		Optional<Result> result = finder.Find(Criteria.One);
 
-		assertEquals(null, result.left());
-		assertEquals(null, result.right());
+        assertFalse(result.isPresent());
 	}
 
 	@Test
@@ -50,10 +49,10 @@ public class FinderTests {
 		list.add(greg);
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(Criteria.One);
+		Optional<Result> result = finder.Find(Criteria.One);
 
-		assertEquals(sue, result.left());
-		assertEquals(greg, result.right());
+		assertEquals(sue, result.get().left());
+		assertEquals(greg, result.get().right());
 	}
 
 	@Test
@@ -64,10 +63,10 @@ public class FinderTests {
 
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(Criteria.Two);
+		Optional<Result> result = finder.Find(Criteria.Two);
 
-		assertEquals(greg, result.left());
-		assertEquals(mike, result.right());
+		assertEquals(greg, result.get().left());
+		assertEquals(mike, result.get().right());
 	}
 
 	@Test
@@ -79,10 +78,10 @@ public class FinderTests {
 		list.add(greg);
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(Criteria.Two);
+		Optional<Result> result = finder.Find(Criteria.Two);
 
-		assertEquals(sue, result.left());
-		assertEquals(sarah, result.right());
+		assertEquals(sue, result.get().left());
+		assertEquals(sarah, result.get().right());
 	}
 
 	@Test
@@ -95,10 +94,10 @@ public class FinderTests {
 
 		Finder finder = new Finder(list);
 
-		Result result = finder.Find(Criteria.One);
+		Optional<Result> result = finder.Find(Criteria.One);
 
-		assertEquals(sue, result.left());
-		assertEquals(greg, result.right());
+		assertEquals(sue, result.get().left());
+		assertEquals(greg, result.get().right());
 	}
 
 }
