@@ -8,7 +8,7 @@ public enum Criteria {
         }
     },
 
-    Farthest {
+    Furthest {
         @Override
         Result choose(Result left, Result right) {
             return left.ageDifference() > right.ageDifference() ? left : right;

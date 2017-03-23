@@ -13,10 +13,10 @@ public class Finder {
     }
 
     public Optional<Result> Find(Criteria criteria) {
-        return results().stream().reduce(criteria::choose);
+        return pairs().stream().reduce(criteria::choose);
     }
 
-    private List<Result> results() {
+    private List<Result> pairs() {
         List<Result> results = new ArrayList<>();
 
         for (int i = 0; i < people.size() - 1; i++) {

@@ -53,7 +53,7 @@ public class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Result result = finder().Find(Criteria.Farthest).orElseThrow(() -> new RuntimeException("Expected a result"));
+        Result result = finder().Find(Criteria.Furthest).orElseThrow(() -> new RuntimeException("Expected a result"));
 
         assertEquals(greg, result.youngest());
         assertEquals(mike, result.oldest());
@@ -66,7 +66,7 @@ public class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Result result = finder().Find(Criteria.Farthest).orElseThrow(() -> new RuntimeException("Expected a result"));
+        Result result = finder().Find(Criteria.Furthest).orElseThrow(() -> new RuntimeException("Expected a result"));
 
         assertEquals(sue, result.youngest());
         assertEquals(sarah, result.oldest());
