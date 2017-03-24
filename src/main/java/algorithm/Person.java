@@ -2,7 +2,7 @@ package algorithm;
 
 import java.util.Date;
 
-public class Person {
+public final class Person {
 
     private final Date birthDate;
 

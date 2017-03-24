@@ -13,7 +13,7 @@ import java.util.Optional;
 import static org.junit.Assert.assertEquals;
 import static org.junit.Assert.assertFalse;
 
-public class FinderTests {
+public final class FinderTests {
 
     private final Person sue = new Person(new Date(50, 0, 1));
     private final Person greg = new Person(new Date(52, 5, 1));

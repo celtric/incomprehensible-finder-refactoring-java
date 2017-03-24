@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.Optional;
 
-public class Finder {
+public final class Finder {
 
     private final List<Person> people;
 

@@ -1,6 +1,6 @@
 package algorithm;
 
-public class Result {
+public final class Result {
 
     private final Person youngest;
     private final Person oldest;
