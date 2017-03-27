@@ -1,22 +1,42 @@
 package algorithm;
 
 public enum Criteria {
-    Closest {
-        @Override
-        Pair choose(Pair a, Pair b) {
-            return a.closest(b);
-        }
-    },
 
-    Furthest {
-        @Override
-        Pair choose(Pair a, Pair b) {
-            return a.furthest(b);
-        }
-    };
+    Closest(Pair::closest),
+    Furthest(Pair::furthest);
 
-    abstract Pair choose(Pair a, Pair b);
+    private final Chooser chooser;
+
+    interface Chooser {
+        Pair choose(Pair a, Pair b);
+    }
+
+    Criteria(Chooser chooser) {
+        this.chooser = chooser;
+    }
+
+    Pair choose(Pair a, Pair b) {
+        return chooser.choose(a, b);
+    }
 }
+
+// public enum Criteria {
+//     Closest {
+//         @Override
+//         Pair choose(Pair a, Pair b) {
+//             return a.closest(b);
+//         }
+//     },
+//
+//     Furthest {
+//         @Override
+//         Pair choose(Pair a, Pair b) {
+//             return a.furthest(b);
+//         }
+//     };
+//
+//     abstract Pair choose(Pair a, Pair b);
+// }
 
 // public enum Criteria {
 //     Closest {
