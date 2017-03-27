@@ -3,19 +3,19 @@ package algorithm;
 public enum Criteria {
     Closest {
         @Override
-        Result choose(Result left, Result right) {
+        Pair choose(Pair left, Pair right) {
             return left.ageDifference() < right.ageDifference() ? left : right;
         }
     },
 
     Furthest {
         @Override
-        Result choose(Result left, Result right) {
+        Pair choose(Pair left, Pair right) {
             return left.ageDifference() > right.ageDifference() ? left : right;
         }
     };
 
-    abstract Result choose(Result left, Result right);
+    abstract Pair choose(Pair left, Pair right);
 }
 
 // public enum Criteria {
@@ -26,14 +26,14 @@ public enum Criteria {
 //     private final Chooser chooser;
 //
 //     interface Chooser {
-//         Result choose(Result left, Result right);
+//         Pair choose(Pair left, Pair right);
 //     }
 //
 //     Criteria(Chooser chooser) {
 //         this.chooser = chooser;
 //     }
 //
-//     Result choose(Result left, Result right) {
+//     Pair choose(Pair left, Pair right) {
 //         return chooser.choose(left, right);
 //     }
 // }

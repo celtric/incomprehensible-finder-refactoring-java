@@ -12,19 +12,19 @@ public final class Finder {
         this.people = people;
     }
 
-    public Optional<Result> Find(Criteria criteria) {
+    public Optional<Pair> Find(Criteria criteria) {
         return pairs().stream().reduce(criteria::choose);
     }
 
-    private List<Result> pairs() {
-        List<Result> results = new ArrayList<>();
+    private List<Pair> pairs() {
+        List<Pair> pairs = new ArrayList<>();
 
         for (int i = 0; i < people.size() - 1; i++) {
             for (int j = i + 1; j < people.size(); j++) {
-                results.add(Result.fromPair(people.get(i), people.get(j)));
+                pairs.add(Pair.fromPair(people.get(i), people.get(j)));
             }
         }
 
-        return results;
+        return pairs;
     }
 }

@@ -2,8 +2,8 @@ package test;
 
 import algorithm.Criteria;
 import algorithm.Finder;
+import algorithm.Pair;
 import algorithm.Person;
-import algorithm.Result;
 import org.junit.Test;
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,7 +23,7 @@ public final class FinderTests {
 
     @Test
     public void Returns_Empty_Results_When_Given_Empty_List() {
-        Optional<Result> result = finder().Find(Criteria.Closest);
+        Optional<Pair> result = finder().Find(Criteria.Closest);
 
         assertFalse(result.isPresent());
     }
@@ -32,7 +32,7 @@ public final class FinderTests {
     public void Returns_Empty_Results_When_Given_One_Person() {
         list.add(sue);
 
-        Optional<Result> result = finder().Find(Criteria.Closest);
+        Optional<Pair> result = finder().Find(Criteria.Closest);
 
         assertFalse(result.isPresent());
     }
@@ -42,10 +42,10 @@ public final class FinderTests {
         list.add(sue);
         list.add(greg);
 
-        Result result = finder().Find(Criteria.Closest).orElseThrow(() -> new RuntimeException("Expected a result"));
+        Pair pair = finder().Find(Criteria.Closest).orElseThrow(() -> new RuntimeException("Expected a pair"));
 
-        assertEquals(sue, result.youngest());
-        assertEquals(greg, result.oldest());
+        assertEquals(sue, pair.youngest());
+        assertEquals(greg, pair.oldest());
     }
 
     @Test
@@ -53,10 +53,10 @@ public final class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Result result = finder().Find(Criteria.Furthest).orElseThrow(() -> new RuntimeException("Expected a result"));
+        Pair pair = finder().Find(Criteria.Furthest).orElseThrow(() -> new RuntimeException("Expected a pair"));
 
-        assertEquals(greg, result.youngest());
-        assertEquals(mike, result.oldest());
+        assertEquals(greg, pair.youngest());
+        assertEquals(mike, pair.oldest());
     }
 
     @Test
@@ -66,10 +66,10 @@ public final class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Result result = finder().Find(Criteria.Furthest).orElseThrow(() -> new RuntimeException("Expected a result"));
+        Pair pair = finder().Find(Criteria.Furthest).orElseThrow(() -> new RuntimeException("Expected a pair"));
 
-        assertEquals(sue, result.youngest());
-        assertEquals(sarah, result.oldest());
+        assertEquals(sue, pair.youngest());
+        assertEquals(sarah, pair.oldest());
     }
 
     @Test
@@ -79,10 +79,10 @@ public final class FinderTests {
         list.add(mike);
         list.add(greg);
 
-        Result result = finder().Find(Criteria.Closest).orElseThrow(() -> new RuntimeException("Expected a result"));
+        Pair pair = finder().Find(Criteria.Closest).orElseThrow(() -> new RuntimeException("Expected a pair"));
 
-        assertEquals(sue, result.youngest());
-        assertEquals(greg, result.oldest());
+        assertEquals(sue, pair.youngest());
+        assertEquals(greg, pair.oldest());
     }
 
     private Finder finder() {
