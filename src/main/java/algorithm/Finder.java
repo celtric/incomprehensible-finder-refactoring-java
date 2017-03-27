@@ -16,11 +16,10 @@ public final class Finder {
     }
 
     private Set<Pair> pairs() {
-        Set<Pair> pairs = new HashSet<>();
-
-        people.forEach(p -> people.forEach(p2 -> pairs.add(Pair.fromUnordered(p, p2))));
-
-        return pairs.stream().filter(p -> !p.youngest().equals(p.oldest())).collect(Collectors.toSet());
+        return people.stream()
+                .flatMap(p -> people.stream().map(p2 -> Pair.fromUnordered(p, p2)))
+                .filter(p -> !p.youngest().equals(p.oldest()))
+                .collect(Collectors.toSet());
 
         // for (Person person : people) {
         //     for (Person person2 : people) {
