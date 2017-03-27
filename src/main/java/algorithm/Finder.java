@@ -21,7 +21,7 @@ public final class Finder {
 
         for (int i = 0; i < people.size() - 1; i++) {
             for (int j = i + 1; j < people.size(); j++) {
-                pairs.add(Pair.fromPair(people.get(i), people.get(j)));
+                pairs.add(Pair.fromUnordered(people.get(i), people.get(j)));
             }
         }
 

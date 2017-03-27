@@ -10,7 +10,7 @@ public final class Pair {
         this.oldest = oldest;
     }
 
-    static Pair fromPair(Person left, Person right) {
+    static Pair fromUnordered(Person left, Person right) {
         return new Pair(left.youngest(right), left.oldest(right));
     }
 
