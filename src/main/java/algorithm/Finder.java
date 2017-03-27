@@ -1,8 +1,6 @@
 package algorithm;
 
-import java.util.ArrayList;
-import java.util.List;
-import java.util.Optional;
+import java.util.*;
 
 public final class Finder {
 
@@ -16,12 +14,14 @@ public final class Finder {
         return pairs().stream().reduce(criteria::choose);
     }
 
-    private List<Pair> pairs() {
-        List<Pair> pairs = new ArrayList<>();
+    private Set<Pair> pairs() {
+        Set<Pair> pairs = new HashSet<>();
 
-        for (int i = 0; i < people.size() - 1; i++) {
-            for (int j = i + 1; j < people.size(); j++) {
-                pairs.add(Pair.fromUnordered(people.get(i), people.get(j)));
+        for (Person person : people) {
+            for (Person person2 : people) {
+                if (!person.equals(person2)) {
+                    pairs.add(Pair.fromUnordered(person, person2));
+                }
             }
         }
 
