@@ -25,4 +25,8 @@ public final class Pair {
     long ageDifference() {
         return oldest.birthDate().getTime() - youngest.birthDate().getTime();
     }
+
+    public Boolean containsSamePerson() {
+        return youngest == oldest;
+    }
 }

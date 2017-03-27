@@ -18,7 +18,7 @@ public final class Finder {
     private Set<Pair> pairs() {
         return people.stream()
                 .flatMap(p -> people.stream().map(p2 -> Pair.fromUnordered(p, p2)))
-                .filter(p -> !p.youngest().equals(p.oldest()))
+                .filter(p -> !p.containsSamePerson())
                 .collect(Collectors.toSet());
 
         // for (Person person : people) {
