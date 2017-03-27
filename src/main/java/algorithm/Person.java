@@ -14,12 +14,12 @@ public final class Person {
         return birthDate;
     }
 
-    Person youngest(Person aPerson) {
-        return isYoungerThan(aPerson) ? this : aPerson;
+    static Person youngest(Person a, Person b) {
+        return a.isYoungerThan(b) ? a : b;
     }
 
-    Person oldest(Person aPerson) {
-        return isYoungerThan(aPerson) ? aPerson : this;
+    static Person oldest(Person a, Person b) {
+        return a.isYoungerThan(b) ? b : a;
     }
 
     private boolean isYoungerThan(Person anotherPerson) {

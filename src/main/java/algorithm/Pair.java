@@ -11,7 +11,7 @@ public final class Pair {
     }
 
     static Pair fromUnordered(Person a, Person b) {
-        return new Pair(a.youngest(b), a.oldest(b));
+        return new Pair(Person.youngest(a, b), Person.oldest(a, b));
     }
 
     public Person youngest() {
@@ -22,19 +22,19 @@ public final class Pair {
         return oldest;
     }
 
-    public Pair closest(Pair aPair) {
-        return ageDifference() < aPair.ageDifference() ? this : aPair;
+    static Pair closest(Pair a, Pair b) {
+        return a.ageDifference() < b.ageDifference() ? a : b;
     }
 
-    public Pair furthest(Pair aPair) {
-        return ageDifference() > aPair.ageDifference() ? this : aPair;
+    static Pair furthest(Pair a, Pair b) {
+        return a.ageDifference() > b.ageDifference() ? a : b;
     }
 
     private long ageDifference() {
         return oldest.birthDate().getTime() - youngest.birthDate().getTime();
     }
 
-    public Boolean containsSamePerson() {
-        return youngest == oldest;
+    Boolean containsDifferentPeople() {
+        return youngest != oldest;
     }
 }
