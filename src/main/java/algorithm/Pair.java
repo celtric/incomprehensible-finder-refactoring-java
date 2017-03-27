@@ -22,7 +22,15 @@ public final class Pair {
         return oldest;
     }
 
-    long ageDifference() {
+    public Pair closest(Pair aPair) {
+        return ageDifference() < aPair.ageDifference() ? this : aPair;
+    }
+
+    public Pair furthest(Pair aPair) {
+        return ageDifference() > aPair.ageDifference() ? this : aPair;
+    }
+
+    private long ageDifference() {
         return oldest.birthDate().getTime() - youngest.birthDate().getTime();
     }
 

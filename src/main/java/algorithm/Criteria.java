@@ -4,19 +4,37 @@ public enum Criteria {
     Closest {
         @Override
         Pair choose(Pair a, Pair b) {
-            return a.ageDifference() < b.ageDifference() ? a : b;
+            return a.closest(b);
         }
     },
 
     Furthest {
         @Override
         Pair choose(Pair a, Pair b) {
-            return a.ageDifference() > b.ageDifference() ? a : b;
+            return a.furthest(b);
         }
     };
 
     abstract Pair choose(Pair a, Pair b);
 }
+
+// public enum Criteria {
+//     Closest {
+//         @Override
+//         Pair choose(Pair a, Pair b) {
+//             return a.ageDifference() < b.ageDifference() ? a : b;
+//         }
+//     },
+//
+//     Furthest {
+//         @Override
+//         Pair choose(Pair a, Pair b) {
+//             return a.ageDifference() > b.ageDifference() ? a : b;
+//         }
+//     };
+//
+//     abstract Pair choose(Pair a, Pair b);
+// }
 
 // public enum Criteria {
 //
