@@ -10,10 +10,6 @@ public final class Person {
         this.birthDate = birthDate;
     }
 
-    Date birthDate() {
-        return birthDate;
-    }
-
     static Person youngest(Person a, Person b) {
         return a.isYoungerThan(b) ? a : b;
     }
@@ -23,7 +19,11 @@ public final class Person {
     }
 
     private boolean isYoungerThan(Person anotherPerson) {
-        return birthDate().getTime() < anotherPerson.birthDate().getTime();
+        return birthDate.getTime() < anotherPerson.birthDate.getTime();
+    }
+
+    long ageDifference(Person anotherPerson) {
+        return birthDate.getTime() - anotherPerson.birthDate.getTime();
     }
 }
 

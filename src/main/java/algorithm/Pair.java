@@ -31,7 +31,7 @@ public final class Pair {
     }
 
     private long ageDifference() {
-        return oldest.birthDate().getTime() - youngest.birthDate().getTime();
+        return oldest.ageDifference(youngest);
     }
 
     Boolean containsDifferentPeople() {
